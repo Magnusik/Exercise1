@@ -21,7 +21,7 @@ When answering the questions, remember to use all the resources at your disposal
  > Concurrent programs could make the life easier for the programmer in the sense of the possibility to track all inputs to the system. However, dealing with all the inputs is where it makes it harder.
  
  ### What are the differences between processes, threads, green threads, and coroutines?
- > *Your answer here*
+ > test
  
  ### Which one of these do `pthread_create()` (C/POSIX), `threading.Thread()` (Python), `go` (Go) create?
  > *Your answer here*
