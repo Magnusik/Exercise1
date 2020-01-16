@@ -21,13 +21,15 @@ When answering the questions, remember to use all the resources at your disposal
  > Concurrent programs could make the life easier for the programmer in the sense of the possibility to track all inputs to the system. However, dealing with all the inputs is where it makes it harder.
  
  ### What are the differences between processes, threads, green threads, and coroutines?
- > test
+ > A process is an executing part of an instance. A thread is a path of execution within a process, or simply a line of control within a program.
+The difference is that the process is the state of the program pluss the states of all the threads that are executing within the program.
+A thread is an entity within a process that can be scheduled for execution. A green thread is thread that is scheduled by a runtime library or Virtual machine.
  
  ### Which one of these do `pthread_create()` (C/POSIX), `threading.Thread()` (Python), `go` (Go) create?
- > *Your answer here*
- 
+ > pthread_create() is a function that starts a new thread in a calling process. threading.Thread() also creates threads, which makes it possible to run multiple tasks and function calls at the same time. 
+ Go routines are functions or methods that run concurrently with other functions or methods. They are less costly than threads and can be thought of as light weight threads.
  ### How does pythons Global Interpreter Lock (GIL) influence the way a python Thread behaves?
- > *Your answer here*
+ > GIL makes it so that the Threads in python cannot execute at the same time. With GIL used in the interpreters only one thread is allowed to execute at a time.
  
  ### With this in mind: What is the workaround for the GIL (Hint: it's another module)?
  > *Your answer here*
