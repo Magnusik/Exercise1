@@ -14,7 +14,7 @@ When answering the questions, remember to use all the resources at your disposal
  
  ### What kinds of problems motivates the need for concurrent execution?
  (Or phrased differently: What problems do concurrency help in solving?)
- > Concurrent execution helps solving problems which happens in real-time where you are dependant that different routines does not happen at the same time. Example of a problem like this would be a cassette player, elevator and traffic system with lights.
+ > Concurrent execution helps solving problems which happens in real-time where you are dependent that different routines does not happen at the same time. Example of a problem like this would be a cassette player, elevator and traffic system with lights.
  
  ### Does creating concurrent programs make the programmer's life easier? Harder? Maybe both?
  (Come back to this after you have worked on part 4 of this exercise)
@@ -40,12 +40,13 @@ Go routines are functions or methods that run concurrently with other functions 
  > GIL makes it so that the Threads in python cannot execute at the same time. With GIL used in the interpreters only one thread is allowed to execute at a time.
  This lock is necessary because CPythons memory management is not thread-safe. Meaning the python interpeter does not manage the thread on itself. It gives an instruction to OS and OS manages the thread.
 This means that if two threads are running at the same time, they will try to occupy the same memory and this can cause bugs in your program.
-Also, this GIL in python makes your threads go in serial instead of parallell. For instance two threads that has a runtime of 2 seconds would in python take 4 seconds to complete because of the GIL.
+Also, this GIL in python makes your threads go in serial instead of concurrently. For instance two threads that has a runtime of 2 seconds would in python take 4 seconds to complete because of the GIL.
 
  ### With this in mind: What is the workaround for the GIL (Hint: it's another module)?
  > A workaround for GIL is to have sufficient time delay between functions so that you ensure that thread 1 executes before thread 2 starts.
-Another workaround is to use different memory for thread one and thread two and then the values together at the end of the program, but that also defeats the purpose of threading 
+Another workaround is to use different memory for thread one and thread two and then the values together at the end of the program, but that also defeats the purpose of threading.
+Another workaround would be to use the Gomaxprocs function to prevent the threads from running in series. 
  
 
  ### What does `func GOMAXPROCS(n int) int` change? 
- > Gomaxprocs changes the maximum number of CPU's that can be executing at the same time and returns the previous setting.
+ > Gomaxprocs changes the maximum number of CPU's that can be executing at the same time.
