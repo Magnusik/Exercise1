@@ -45,7 +45,6 @@ Also, this GIL in python makes your threads go in serial instead of concurrently
  ### With this in mind: What is the workaround for the GIL (Hint: it's another module)?
  > A workaround for GIL is to have sufficient time delay between functions so that you ensure that thread 1 executes before thread 2 starts.
 Another workaround is to use different memory for thread one and thread two and then the values together at the end of the program, but that also defeats the purpose of threading.
-Another workaround would be to use the Gomaxprocs function to prevent the threads from running in series. 
  
 
  ### What does `func GOMAXPROCS(n int) int` change? 
