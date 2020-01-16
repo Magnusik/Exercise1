@@ -10,18 +10,14 @@ from threading import Thread
 i = 0
 
 def incrementingFunction():
-    k=0
     global i
-    while k<1000000:
-        k+=1
+    for k in range(1000000):
         i+=1
 
 def decrementingFunction():
-    k=0
     global i
     # TODO: decrement i 1_000_000 times
-    while k<1_000_000:
-        k+=1
+    for k in range(1000000):
         i-=1
 
 def main():
