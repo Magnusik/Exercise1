@@ -21,8 +21,7 @@ def decrementingFunction():
         i-=1
 
 def main():
-    # TODO: Something is missing here (needed to print i)
-
+    
     incrementing = Thread(target = incrementingFunction, args = (),)
     decrementing = Thread(target = decrementingFunction, args = (),)
 
