@@ -28,13 +28,8 @@ The difference is that the process is the state of the program pluss the states 
 A thread is an entity within a process that can be scheduled for execution. A green thread is thread that is scheduled by a runtime library or Virtual machine. So the difference between thread and green thread is that it is not run by the underlying operating system.
 Coroutines are similar to threads, but they are not premtivly multitasked. They are cooperativly multitasked, which means that the threads in the system voluntarily suspends their control to the CPU.
  ### Which one of these do `pthread_create()` (C/POSIX), `threading.Thread()` (Python), `go` (Go) create?
- > pthread_create() is a function that starts a new thread in a calling process. pthreads are standard based threads API for C/C++, which for windows are user-level-threads.
-   
-threading.Thread() also creates threads, which makes it possible to run multiple tasks and function calls at the same time, but these are Kernel-level-threads, which means that python itself does not have to deal with the threads itself, it sends it to operating system to handle.
-   This also means that threading in Python does not make them go faster. (two threads taking two seconds each, would require 4 seconds or runtime)( this would not happen in C).   
-   
-Go routines are functions or methods that run concurrently with other functions or methods. They are less costly than threads and can be thought of as light weight threads. They are also scheduled coopertivly, making them coroutines rather than threads which are premtivly scheduled.
-
+ > pthread_create() is a function that starts a new thread in a calling process. pthreads are standard based threads API for C/C++, which for windows are user-level-threads.	threading.Thread() also creates threads, which makes it possible to run multiple tasks and function calls at the same time, but these are Kernel-level-threads, which means that python itself does not have to deal with the threads itself, it sends it to operating system to handle.
+This also means that threading in Python does not make them go faster. (two threads taking two seconds each, would require 4 seconds or runtime)( this would not happen in C).	Go routines are functions or methods that run concurrently with other functions or methods. They are less costly than threads and can be thought of as light weight threads. They are also scheduled coopertivly, making them coroutines rather than threads which are premtivly scheduled.
 
  ### How does pythons Global Interpreter Lock (GIL) influence the way a python Thread behaves?
  > GIL makes it so that the Threads in python cannot execute at the same time. With GIL used in the interpreters only one thread is allowed to execute at a time. This basicly limits us to execute a python program on one CPU.
