@@ -7,7 +7,7 @@ When answering the questions, remember to use all the resources at your disposal
 
  ### What is concurrency? What is parallelism? What's the difference?
  > Concurrency is when two tasks can start, run and complete at the same time. Parallelism is when two tasks when happens at the same time. 
- The difference is that concurrency means dealing with several tasks at the same time and parallelism means doing several tasks at the same time. You could have concurrency and not parallism for instant, which means you are able to process multiple tasks at the same time, but not execute them at the same time. Moreover, if you have parallelism, but not concurrency, you can execute multiple tasks at the same time, but not process them at the same time.  
+ The difference is that concurrency means dealing with several tasks at the same time and parallelism means doing several tasks at the same time. You could have concurrency and not parallism for instance, which means you are able to process multiple tasks at the same time, but not execute them at the same time. Moreover, if you have parallelism, but not concurrency, you can execute multiple tasks at the same time, but not process them at the same time.  
  
  ### Why have machines become increasingly multicore in the past decade?
  > Machines have become increasingly multicore in the past decade because technology has come so far that we are reaching physical limits of how many transistors/gates we can push into a limited space in the processor. This means that to increase clock speed further we need more cores to achieve parallelism, and higher speed.
@@ -37,14 +37,13 @@ Go routines are functions or methods that run concurrently with other functions 
 
 
  ### How does pythons Global Interpreter Lock (GIL) influence the way a python Thread behaves?
- > GIL makes it so that the Threads in python cannot execute at the same time. With GIL used in the interpreters only one thread is allowed to execute at a time.
+ > GIL makes it so that the Threads in python cannot execute at the same time. With GIL used in the interpreters only one thread is allowed to execute at a time. This basicly limits us to execute a python program on one CPU.
  This lock is necessary because CPythons memory management is not thread-safe. Meaning the python interpeter does not manage the thread on itself. It gives an instruction to OS and OS manages the thread.
 This means that if two threads are running at the same time, they will try to occupy the same memory and this can cause bugs in your program.
 Also, this GIL in python makes your threads go in serial instead of concurrently. For instance two threads that has a runtime of 2 seconds would in python take 4 seconds to complete because of the GIL.
 
  ### With this in mind: What is the workaround for the GIL (Hint: it's another module)?
- > A workaround for GIL is to have sufficient time delay between functions so that you ensure that thread 1 executes before thread 2 starts.
-Another workaround is to use different memory for thread one and thread two and then the values together at the end of the program, but that also defeats the purpose of threading.
+ > A workaround for GIL is to use a multiprocessing module to make it possible for programs like python programs to run concurrently. 
  
 
  ### What does `func GOMAXPROCS(n int) int` change? 
