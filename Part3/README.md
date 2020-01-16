@@ -30,9 +30,14 @@ A thread is an entity within a process that can be scheduled for execution. A gr
  Go routines are functions or methods that run concurrently with other functions or methods. They are less costly than threads and can be thought of as light weight threads.
  ### How does pythons Global Interpreter Lock (GIL) influence the way a python Thread behaves?
  > GIL makes it so that the Threads in python cannot execute at the same time. With GIL used in the interpreters only one thread is allowed to execute at a time.
- 
+ This lock is necessary because CPythons memory management is not thread-safe. Meaning the python interpeter does not manage the thread on itself. It gives an instruction to OS and OS manages the thread.
+This means that if two threads are running at the same time, they will try to occupy the same memory and this can cause bugs in your program.
+Also, this GIL in python makes your threads go in serial instead of parallell. For instance two threads that has a runtime of 2 seconds would in python take 4 seconds to complete because of the GIL.
+
  ### With this in mind: What is the workaround for the GIL (Hint: it's another module)?
- > *Your answer here*
+ > A workaround for GIL is to have sufficient time delay between functions so that you ensure that thread 1 executes before thread 2 starts.
+Another workaround is to use different memory for thread one and thread two and then the values together at the end of the program. 
  
+
  ### What does `func GOMAXPROCS(n int) int` change? 
- > *Your answer here*
+ > Gomaxprocs changes the maximum number of CPU's that can be executing at the same time and returns the previous setting.
